@@ -161,6 +161,7 @@ const prevMembers = ref([
 ]) as unknown as SiteMember[];
 
 const siteHistory = ref([
+  new SiteHistory(`2025-11-11`, `애니시아 서버이전`),
   new SiteHistory(`2024-08-13`, `애니편성표 2024 출시`, `/notice?topicNo=248`),
   new SiteHistory(`2024-02-23`, `테라시아 도메인 종료`, `/notice?topicNo=198`),
   new SiteHistory(`2024-01-24`, `애니시아 안드로이드 앱 출시`, `https://play.google.com/store/apps/dev?id=6556202027842431619`),
