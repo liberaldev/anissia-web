@@ -14,13 +14,13 @@
       애니시아의 관리를 총괄하고 있는 운영진입니다.
     </div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div v-for="node in adminMembers" :key="node.key" class="p-4 as-box">
+      <div v-for="node in adminMembers" :key="node.name" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
         </div>
         <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
+          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.text">
             <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             <span v-else>{{sn.text}}</span>
           </span>
@@ -33,13 +33,13 @@
       테라시아(현 <a href="https://gs.saro.me">가리사니</a>)의 멤버로 애니시아 독립 이전에는 운영을 이후에는 지원을 하고 있습니다.
     </div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div v-for="node in supportMembers" :key="node.key" class="p-4 as-box">
+      <div v-for="node in supportMembers" :key="node.name" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
         </div>
         <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
+          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.text">
             <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             <span v-else>{{sn.text}}</span>
           </span>
@@ -49,13 +49,13 @@
 
     <div class="font-semibold text-xl mt-12">그래픽 지원</div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div v-for="node in supportGraphicMembers" :key="node.key" class="p-4 as-box">
+      <div v-for="node in supportGraphicMembers" :key="node.name" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
         </div>
         <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
+          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.text">
             <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             <span v-else>{{sn.text}}</span>
           </span>
@@ -65,13 +65,13 @@
 
     <div class="font-semibold text-xl mt-12">과거 맴버</div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      <div v-for="node in prevMembers" :key="node.key" class="p-4 as-box">
+      <div v-for="node in prevMembers" :key="node.name" class="p-4 as-box">
         <div>
           <div class="text-lg font-bold text-gray-800 dark:text-zinc-300">{{node.name}}</div>
           <div class="text-sm mt-1" v-html="node.date"></div>
         </div>
         <div class="mt-1 space-x-1 space-y-2 text-gray-800 dark:text-zinc-300">
-          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.key">
+          <span class="as-tag-xs" v-for="sn in node.tags" :key="sn.text">
             <a :href="sn.link" v-if="sn.link">{{sn.text}} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             <span v-else>{{sn.text}}</span>
           </span>
@@ -81,7 +81,7 @@
 
     <div class="font-bold text-xl mt-12">연혁</div>
     <ol class="mt-3 relative border-l border-gray-200 dark:border-gray-700">
-      <li v-for="node in siteHistory" :key="node.key" class="mb-6 ml-4">
+      <li v-for="node in siteHistory" :key="node.date + node.desc" class="mb-6 ml-4">
         <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
         <time class="text-sm text-gray-400 dark:text-gray-500">{{node.date}}</time>
         <h3 class="mt-1 text-md font-semibold text-gray-700 dark:text-white">{{node.desc}}</h3>
@@ -135,83 +135,183 @@ import {SiteMember} from "./introduce/SiteMember";
 
 const nowYear = new Date().getFullYear();
 
-const adminMembers = ref([
-  new SiteMember('또_탈퇴된코란', `2009 ~ ${nowYear}`, [`기획`, `관리`, `애니시아 서버 제공`, `블로그||https://coran.co.kr`, `트위터||https://twitter.com/c0ran`]),
-  new SiteMember('Leon', `2015 ~ ${nowYear}`, [`관리`]),
-]) as unknown as SiteMember[];
+const adminMembers = ref<SiteMember[]>([
+  {
+    name: '또_탈퇴된코란',
+    date: `2009 ~ ${nowYear}`,
+    tags: [
+      { text: '기획' },
+      { text: '관리' },
+      { text: '애니시아 서버 제공' },
+      { text: '블로그', link: 'https://coran.co.kr' },
+      { text: '트위터', link: 'https://twitter.com/c0ran' }
+    ]
+  },
+  {
+    name: 'Leon',
+    date: `2015 ~ ${nowYear}`,
+    tags: [
+      { text: '관리' }
+    ]
+  },
+]);
 
-const supportMembers = ref([
-  new SiteMember('박용서', `2007 ~ 2013: 개발운영 (애니시아 독립 전)<br/>2013 ~ ${nowYear}: 개발지원`, [`개발총괄`, `애니편성표`, `애니시아`, `시스템`, `API`, `디자인`, `기획`, `가리사니||https://gs.saro.me`, `GITHUB||https://github.com/ac-saro` ,`페이스북||https://www.facebook.com/j.saro.co`]),
-  new SiteMember('코네', `2024`, [`애니편성표`, `GITHUB||https://github.com/CodeName393` ,`블로그||https://codename393.tistory.com/`]),
-]) as unknown as SiteMember[];
+const supportMembers = ref<SiteMember[]>([
+  {
+    name: '박용서',
+    date: `2007 ~ 2013: 개발운영 (애니시아 독립 전)<br/>2013 ~ ${nowYear}: 개발지원`,
+    tags: [
+      { text: '개발총괄' },
+      { text: '애니편성표' },
+      { text: '애니시아' },
+      { text: '시스템' },
+      { text: 'API' },
+      { text: '디자인' },
+      { text: '기획' },
+      { text: '가리사니', link: 'https://gs.saro.me' },
+      { text: 'GITHUB', link: 'https://github.com/ac-saro' },
+      { text: '페이스북', link: 'https://www.facebook.com/j.saro.co' }
+    ]
+  },
+  {
+    name: '코네',
+    date: `2024`,
+    tags: [
+      { text: '애니편성표', link: '' },
+      { text: 'GITHUB', link: 'https://github.com/CodeName393' },
+      { text: '블로그', link: 'https://codename393.tistory.com/' }
+    ]
+  },
+]);
 
-const supportGraphicMembers = ref([
-  new SiteMember('당무지', `2023 ~ ${nowYear}`, [`애니시아 아이콘, 애니편성표 아이콘`, `블로그||https://blog.naver.com/vip125`]),
-]) as unknown as SiteMember[];
+const supportGraphicMembers = ref<SiteMember[]>([
+  {
+    name: '당무지',
+    date: `2023 ~ ${nowYear}`,
+    tags: [
+      { text: '애니시아 아이콘, 애니편성표 아이콘' },
+      { text: '블로그', link: 'https://blog.naver.com/vip125' }
+    ]
+  },
+]);
 
-const prevMembers = ref([
-  new SiteMember('UTPasiirs', '2015 ~ 2018', [`관리`]),
-  new SiteMember('매디', `2007 ~ 2013<br/>테라시아 소속 일러스트 총괄`, [`일러스트총괄`, `아이콘`, `애니편성표`, `블로그||https://blog.naver.com/ehozil`]),
-  new SiteMember('ORS (단체)', '2009 ~ 2011', [`라디오편성표`]),
-  new SiteMember('Reve', '2007 ~ 2011', [`iOS`]),
-  new SiteMember('메티오', '2009 ~ 2010', [`일러스트`, `디자인`, `Anissia 마크`]),
-  new SiteMember('Annyeong', '2009', [`다음위젯`]),
-  new SiteMember('Kernys', '2009', [`다음위젯`]),
-  new SiteMember('랜스', '2007 ~ 2009', [`애니편성표 프로그램`, `블로그||http://blog.lancekun.com/tc/`]),
-]) as unknown as SiteMember[];
+const prevMembers = ref<SiteMember[]>([
+  {
+    name: 'UTPasiirs',
+    date: '2015 ~ 2018',
+    tags: [
+      { text: '관리', link: '' }
+    ]
+  },
+  {
+    name: '매디',
+    date: `2007 ~ 2013<br/>테라시아 소속 일러스트 총괄`,
+    tags: [
+      { text: '일러스트총괄', link: '' },
+      { text: '아이콘', link: '' },
+      { text: '애니편성표', link: '' },
+      { text: '블로그', link: 'https://blog.naver.com/ehozil' }
+    ]
+  },
+  {
+    name: 'ORS (단체)',
+    date: '2009 ~ 2011',
+    tags: [
+      { text: '라디오편성표' }
+    ]
+  },
+  {
+    name: 'Reve',
+    date: '2007 ~ 2011',
+    tags: [
+      { text: 'iOS' }
+    ]
+  },
+  {
+    name: '메티오',
+    date: '2009 ~ 2010',
+    tags: [
+      { text: '일러스트' },
+      { text: '디자인' },
+      { text: 'Anissia 마크' }
+    ]
+  },
+  {
+    name: 'Annyeong',
+    date: '2009',
+    tags: [
+      { text: '다음위젯' }
+    ]
+  },
+  {
+    name: 'Kernys',
+    date: '2009',
+    tags: [
+      { text: '다음위젯' }
+    ]
+  },
+  {
+    name: '랜스',
+    date: '2007 ~ 2009',
+    tags: [
+      { text: '애니편성표 프로그램' },
+      { text: '블로그', link: 'http://blog.lancekun.com/tc/' }
+    ]
+  },
+]);
 
-const siteHistory = ref([
-  new SiteHistory(`2025-11-11`, `애니시아 서버이전`),
-  new SiteHistory(`2024-08-13`, `애니편성표 2024 출시`, `/notice?topicNo=248`),
-  new SiteHistory(`2024-02-23`, `테라시아 도메인 종료`, `/notice?topicNo=198`),
-  new SiteHistory(`2024-01-24`, `애니시아 안드로이드 앱 출시`, `https://play.google.com/store/apps/dev?id=6556202027842431619`),
-  new SiteHistory(`2023-04-16`, `백엔드 리팩토링`, `/notice?topicNo=134`),
-  new SiteHistory(`2023-02-11`, `애니시아 아이콘 변경`),
-  new SiteHistory(`2023-01-30`, `DNS 서버변경`, `/notice?topicNo=115`),
-  new SiteHistory(`2023-01-09`, `서버교체`, `/notice?topicNo=109`),
-  new SiteHistory(`2022-09-20`, `2022 디자인 리뉴얼 (개발:가리사니 개발자공간)`, `/notice?topicNo=93`),
-  new SiteHistory(`2022-09-20`, `공유기 교체 (간헐적 서버 다운 원인)`, `/notice?topicNo=88`),
-  new SiteHistory(`2021-02-08`, `2020 리뉴얼 (개발:가리사니 개발자공간)`, `/notice?topicNo=27`),
-  new SiteHistory(`2015-07-19`, `2015 리뉴얼 (개발:가리사니 개발자공간)`),
-  new SiteHistory(`2015-06-23`, `기가랜 설치, 새로운 저전력 서버로 교체`),
-  new SiteHistory(`2015-05-31`, `Daum위젯뱅크 서비스 종료로 새로운 위젯 서비스 시작`),
-  new SiteHistory(`2014-05-11`, `애니편성표 모바일 웹 버젼 등재`),
-  new SiteHistory(`2014-04-14`, `애니편성표 크롬 확장프로그램 등록`),
-  new SiteHistory(`2014-01-01`, `가리사니 -> 또_탈퇴된코란 운영권 이전`),
-  new SiteHistory(`2013-12-13`, `구 애니편성표 API (가리사니서버 제공) 지원종료`),
-  new SiteHistory(`2013-12-03`, `가리사니서버 -> 또_탈퇴된코란서버로 이전`),
-  new SiteHistory(`2013-12-03`, `애니시아 완전 독립버전 완성 - 서버이전 기초작업`),
-  new SiteHistory(`2013-12-02`, `애니편성표 다음 위젯 리뉴얼`),
-  new SiteHistory(`2013-11-29`, `신규 회원가입 개시 : 그동안 비공식적으로만 받음`),
-  new SiteHistory(`2013-11-29`, `애니편성표 기능 확장 및 종영애니 표시`),
-  new SiteHistory(`2013-11-29`, `애니시아 리뉴얼`),
-  new SiteHistory(`2013-11-29`, `라디오 편성표 시스템 폐기 (사실상 2011년 중단)`),
-  new SiteHistory(`2013-10-14`, `가리사니 개발자 공간에서 분리`),
-  new SiteHistory(`2013-10-14`, `애니시아와 가리사니의 회원 데이터베이스 분리`),
-  new SiteHistory(`2013-02-20`, `안드로이드용 애니편성표 (애니)`),
-  new SiteHistory(`2012-05-30`, `윈도우폰용 애니편성표 (애니)`),
-  new SiteHistory(`2011-05-11`, `아이폰용 애니편성표 (애니)`),
-  new SiteHistory(`2011-03-25`, `공식사이트 표시기능 추가 (애니)`),
-  new SiteHistory(`2011-02-18`, `애니위젯 폐기 (530 버전) (애니)`),
-  new SiteHistory(`2010-10-03`, `관리시스템 자동화 (애니/라디오)`),
-  new SiteHistory(`2010-10-03`, `서버문제로 가리사니에 재병합 (애니/라디오)`),
-  new SiteHistory(`2010-10-03`, `테라시아 -> 가리사니 이름 변경`),
-  new SiteHistory(`2009-12-04`, `애니위젯 등록 (625 버전) (애니)`),
-  new SiteHistory(`2009-09-29`, `애니위젯 등록 (530 버전 / 현재폐기됨) (애니)`),
-  new SiteHistory(`2009-09-28`, `자막제작자분이 직접 수정가능 (애니)`),
-  new SiteHistory(`2009-09-11`, `테라시아로부터 애니시아 독립 (애니/라디오)`),
-  new SiteHistory(`2009-08-17`, `라디오 편성표 탄생 (라디오)`),
-  new SiteHistory(`2009-08-17`, `비정규/신작표시시작 (애니)`),
-  new SiteHistory(`2009-07-03`, `자막제작자 표시 (애니)`),
-  new SiteHistory(`2009-06-21`, `테라시아의 이름을 따서 anissia.net 도메인 선점`),
-  new SiteHistory(`2009-06-21`, `애니규모가 커짐에따라 테라시아 개발자 포럼의 정체성 문제로 분리 논의`),
-  new SiteHistory(`2009-06-02`, `또_탈퇴된코란 참여 (자막제작자 기능 및 현재 편성표 기획)`),
-  new SiteHistory(`2009-03-14`, `애니편성표 시범시작 (애니)\n2013년 신버전이 나오면서 폐기될 예정이었으나, 폐기반대 요청이 많아 레트로 버전으로 운영중`),
-  new SiteHistory(`2008-08-07`, `테라시아 리뉴얼 (모든 데이터 초기화)`),
-  new SiteHistory(`2007-02-22`, `테라시아 마니아즈파트의 애니메이션탭 소매뉴 생성 : 현 애니시아의 전신`),
-  new SiteHistory(`2007-02-22`, `테라시아 개발자 포럼(현:가리사니 개발자 공간) 개시`),
-  new SiteHistory(`2007-02-22`, `클라비스 -> 테라시아 이름변경 후 도메인(terassia.com) 구입 서비스 개시`),
-]) as unknown as SiteHistory[];
+const siteHistory = ref<SiteHistory[]>([
+  { date: `2025-11-11`, desc: `애니시아 서버이전` },
+  { date: `2024-08-13`, desc: `애니편성표 2024 출시`, link: `/notice?topicNo=248` },
+  { date: `2024-02-23`, desc: `테라시아 도메인 종료`, link: `/notice?topicNo=198` },
+  { date: `2024-01-24`, desc: `애니시아 안드로이드 앱 출시`, link: `https://play.google.com/store/apps/dev?id=6556202027842431619` },
+  { date: `2023-04-16`, desc: `백엔드 리팩토링`, link: `/notice?topicNo=134` },
+  { date: `2023-02-11`, desc: `애니시아 아이콘 변경`, link: '' },
+  { date: `2023-01-30`, desc: `DNS 서버변경`, link: `/notice?topicNo=115` },
+  { date: `2023-01-09`, desc: `서버교체`, link: `/notice?topicNo=109` },
+  { date: `2022-09-20`, desc: `2022 디자인 리뉴얼 (개발:가리사니 개발자공간)`, link: `/notice?topicNo=93` },
+  { date: `2022-09-20`, desc: `공유기 교체 (간헐적 서버 다운 원인)`, link: `/notice?topicNo=88` },
+  { date: `2021-02-08`, desc: `2020 리뉴얼 (개발:가리사니 개발자공간)`, link: `/notice?topicNo=27` },
+  { date: `2015-07-19`, desc: `2015 리뉴얼 (개발:가리사니 개발자공간)`, link: '' },
+  { date: `2015-06-23`, desc: `기가랜 설치, 새로운 저전력 서버로 교체`, link: '' },
+  { date: `2015-05-31`, desc: `Daum위젯뱅크 서비스 종료로 새로운 위젯 서비스 시작`, link: '' },
+  { date: `2014-05-11`, desc: `애니편성표 모바일 웹 버젼 등재`, link: '' },
+  { date: `2014-04-14`, desc: `애니편성표 크롬 확장프로그램 등록`, link: '' },
+  { date: `2014-01-01`, desc: `가리사니 -> 또_탈퇴된코란 운영권 이전`, link: '' },
+  { date: `2013-12-13`, desc: `구 애니편성표 API (가리사니서버 제공) 지원종료`, link: '' },
+  { date: `2013-12-03`, desc: `가리사니서버 -> 또_탈퇴된코란서버로 이전`, link: '' },
+  { date: `2013-12-03`, desc: `애니시아 완전 독립버전 완성 - 서버이전 기초작업`, link: '' },
+  { date: `2013-12-02`, desc: `애니편성표 다음 위젯 리뉴얼`, link: '' },
+  { date: `2013-11-29`, desc: `신규 회원가입 개시 : 그동안 비공식적으로만 받음`, link: '' },
+  { date: `2013-11-29`, desc: `애니편성표 기능 확장 및 종영애니 표시`, link: '' },
+  { date: `2013-11-29`, desc: `애니시아 리뉴얼`, link: '' },
+  { date: `2013-11-29`, desc: `라디오 편성표 시스템 폐기 (사실상 2011년 중단)`, link: '' },
+  { date: `2013-10-14`, desc: `가리사니 개발자 공간에서 분리`, link: '' },
+  { date: `2013-10-14`, desc: `애니시아와 가리사니의 회원 데이터베이스 분리`, link: '' },
+  { date: `2013-02-20`, desc: `안드로이드용 애니편성표 (애니)`, link: '' },
+  { date: `2012-05-30`, desc: `윈도우폰용 애니편성표 (애니)`, link: '' },
+  { date: `2011-05-11`, desc: `아이폰용 애니편성표 (애니)`, link: '' },
+  { date: `2011-03-25`, desc: `공식사이트 표시기능 추가 (애니)`, link: '' },
+  { date: `2011-02-18`, desc: `애니위젯 폐기 (530 버전) (애니)`, link: '' },
+  { date: `2010-10-03`, desc: `관리시스템 자동화 (애니/라디오)`, link: '' },
+  { date: `2010-10-03`, desc: `서버문제로 가리사니에 재병합 (애니/라디오)`, link: '' },
+  { date: `2010-10-03`, desc: `테라시아 -> 가리사니 이름 변경`, link: '' },
+  { date: `2009-12-04`, desc: `애니위젯 등록 (625 버전) (애니)`, link: '' },
+  { date: `2009-09-29`, desc: `애니위젯 등록 (530 버전 / 현재폐기됨) (애니)`, link: '' },
+  { date: `2009-09-28`, desc: `자막제작자분이 직접 수정가능 (애니)`, link: '' },
+  { date: `2009-09-11`, desc: `테라시아로부터 애니시아 독립 (애니/라디오)`, link: '' },
+  { date: `2009-08-17`, desc: `라디오 편성표 탄생 (라디오)`, link: '' },
+  { date: `2009-08-17`, desc: `비정규/신작표시시작 (애니)`, link: '' },
+  { date: `2009-07-03`, desc: `자막제작자 표시 (애니)`, link: '' },
+  { date: `2009-06-21`, desc: `테라시아의 이름을 따서 anissia.net 도메인 선점`, link: '' },
+  { date: `2009-06-21`, desc: `애니규모가 커짐에따라 테라시아 개발자 포럼의 정체성 문제로 분리 논의`, link: '' },
+  { date: `2009-06-02`, desc: `또_탈퇴된코란 참여 (자막제작자 기능 및 현재 편성표 기획)`, link: '' },
+  { date: `2009-03-14`, desc: `애니편성표 시범시작 (애니)\n2013년 신버전이 나오면서 폐기될 예정이었으나, 폐기반대 요청이 많아 레트로 버전으로 운영중`, link: '' },
+  { date: `2008-08-07`, desc: `테라시아 리뉴얼 (모든 데이터 초기화)`, link: '' },
+  { date: `2007-02-22`, desc: `테라시아 마니아즈파트의 애니메이션탭 소매뉴 생성 : 현 애니시아의 전신`, link: '' },
+  { date: `2007-02-22`, desc: `테라시아 개발자 포럼(현:가리사니 개발자 공간) 개시`, link: '' },
+  { date: `2007-02-22`, desc: `클라비스 -> 테라시아 이름변경 후 도메인(terassia.com) 구입 서비스 개시`, link: '' },
+]);
 
 const gallery = ref([
   { src: timetable_1_jpg, file: 'timetable.1.jpg', title: `최초의 애니편성표 [2009년]`, desc: `애니시간표 -> 애니편성표 (기존 애니시간표는 자료소실)` },
