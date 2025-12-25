@@ -132,6 +132,7 @@ import anissia_6_jpg from './introduce/anissia.6.jpg';
 import {ref} from "vue";
 import {SiteHistory} from "./introduce/SiteHistory";
 import {SiteMember} from "./introduce/SiteMember";
+import {SiteGallery} from "./introduce/SiteGallery";
 
 const nowYear = new Date().getFullYear();
 
@@ -313,7 +314,7 @@ const siteHistory = ref<SiteHistory[]>([
   { date: `2007-02-22`, desc: `클라비스 -> 테라시아 이름변경 후 도메인(terassia.com) 구입 서비스 개시` },
 ]);
 
-const gallery = ref([
+const gallery = ref<SiteGallery[]>([
   { src: timetable_1_jpg, file: 'timetable.1.jpg', title: `최초의 애니편성표 [2009년]`, desc: `애니시간표 -> 애니편성표 (기존 애니시간표는 자료소실)` },
   { src: timetable_2_jpg, file: 'timetable.2.jpg', title: `두번째 애니편성표 [2009년]`, desc: `이 디자인을 선호하는 사람이 많아 현재도 제공중` },
   { src: timetable_3_jpg, file: 'timetable.3.jpg', title: `세번째 애니편성표 [2015년]`, desc: `2020년에 다크모드가 추가됨 (정확히는 네번째로 2013년 부터 2015년 까지 존재한 편성표가 있음)` },
