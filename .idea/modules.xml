@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/anisia-web.iml" filepath="$PROJECT_DIR$/.idea/anisia-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/anissia-web.iml" filepath="$PROJECT_DIR$/.idea/anissia-web.iml" />
     </modules>
   </component>
 </project>
