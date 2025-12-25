@@ -178,7 +178,7 @@ const supportMembers = ref<SiteMember[]>([
     name: '코네',
     date: `2024`,
     tags: [
-      { text: '애니편성표', link: '' },
+      { text: '애니편성표' },
       { text: 'GITHUB', link: 'https://github.com/CodeName393' },
       { text: '블로그', link: 'https://codename393.tistory.com/' }
     ]
