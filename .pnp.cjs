@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-vue", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.3"],\
           ["anissia-web", "workspace:."],\
           ["autoprefixer", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:10.4.23"],\
+          ["colorjs.io", "npm:0.6.0"],\
           ["markdown-it", "npm:14.1.0"],\
           ["pinia", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.0.4"],\
           ["postcss", "npm:8.5.6"],\
@@ -45,7 +46,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:7.3.0"],\
           ["vite-plugin-html", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.2.2"],\
           ["vue", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.5.26"],\
-          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:5.3.1"],\
+          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.0"],\
           ["vue-router", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:4.6.4"],\
           ["vue-toastification", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:2.0.0-rc.5"],\
           ["vue-tsc", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.2.1"]\
@@ -1141,6 +1142,7 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-vue", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.3"],\
           ["anissia-web", "workspace:."],\
           ["autoprefixer", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:10.4.23"],\
+          ["colorjs.io", "npm:0.6.0"],\
           ["markdown-it", "npm:14.1.0"],\
           ["pinia", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.0.4"],\
           ["postcss", "npm:8.5.6"],\
@@ -1153,7 +1155,7 @@ const RAW_RUNTIME_STATE =
           ["vite", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:7.3.0"],\
           ["vite-plugin-html", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.2.2"],\
           ["vue", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.5.26"],\
-          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:5.3.1"],\
+          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.0"],\
           ["vue-router", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:4.6.4"],\
           ["vue-toastification", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:2.0.0-rc.5"],\
           ["vue-tsc", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.2.1"]\
@@ -1532,6 +1534,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/colorette-npm-2.0.19-f73dfe6a4e-6e2606435c.zip/node_modules/colorette/",\
         "packageDependencies": [\
           ["colorette", "npm:2.0.19"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["colorjs.io", [\
+      ["npm:0.6.0", {\
+        "packageLocation": "./.yarn/cache/colorjs.io-npm-0.6.0-e34d53413e-83c3e1381f.zip/node_modules/colorjs.io/",\
+        "packageDependencies": [\
+          ["colorjs.io", "npm:0.6.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4174,22 +4185,26 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["vue-accessible-color-picker", [\
-      ["npm:5.3.1", {\
-        "packageLocation": "./.yarn/cache/vue-accessible-color-picker-npm-5.3.1-15d73cc755-b3eb81820e.zip/node_modules/vue-accessible-color-picker/",\
+      ["npm:6.0.0", {\
+        "packageLocation": "./.yarn/cache/vue-accessible-color-picker-npm-6.0.0-f901f9d470-4af79543bd.zip/node_modules/vue-accessible-color-picker/",\
         "packageDependencies": [\
-          ["vue-accessible-color-picker", "npm:5.3.1"]\
+          ["vue-accessible-color-picker", "npm:6.0.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:5.3.1", {\
-        "packageLocation": "./.yarn/__virtual__/vue-accessible-color-picker-virtual-067a90f44f/0/cache/vue-accessible-color-picker-npm-5.3.1-15d73cc755-b3eb81820e.zip/node_modules/vue-accessible-color-picker/",\
+      ["virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.0", {\
+        "packageLocation": "./.yarn/__virtual__/vue-accessible-color-picker-virtual-20bc46620b/0/cache/vue-accessible-color-picker-npm-6.0.0-f901f9d470-4af79543bd.zip/node_modules/vue-accessible-color-picker/",\
         "packageDependencies": [\
+          ["@types/colorjs.io", null],\
           ["@types/vue", null],\
+          ["colorjs.io", "npm:0.6.0"],\
           ["vue", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:3.5.26"],\
-          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:5.3.1"]\
+          ["vue-accessible-color-picker", "virtual:0aa41f1493fbf4be1edee3112bc5accb4a8d3cbf2ab01d0b8ed90b685f49348387f91d724ffbf4a5b88be15998f2ed6543b5c9ac36fcc7081329310f90c6f2c5#npm:6.0.0"]\
         ],\
         "packagePeers": [\
+          "@types/colorjs.io",\
           "@types/vue",\
+          "colorjs.io",\
           "vue"\
         ],\
         "linkType": "HARD"\

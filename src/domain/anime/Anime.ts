@@ -18,7 +18,7 @@ export default class Anime {
     public week = '8';
     public captions: AnimeCaption[] = [];
 
-    private tags: string[] = [];
+    public tags: string[] = [];
 
     // agenda
     public agendaNo = 0;
