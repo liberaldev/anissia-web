@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-white dark:bg-black min-h-screen text-zinc-800 dark:text-zinc-400 pb-10 box-border duration-300">
+  <div class="min-h-screen text-zinc-800 dark:text-zinc-400 pb-10 box-border duration-300">
 
     <!-- 헤더 -->
     <header class="sticky top-0 z-30 w-full backdrop-blur transition-colors border-b border-slate-900/10 dark:border-zinc-900 bg-white/80 dark:bg-[#050505]/80 flex">
