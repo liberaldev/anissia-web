@@ -8,9 +8,7 @@ export default defineConfig(({command, mode}) => {
 
   const options = {
     plugins: [
-        vue({
-            reactivityTransform: true
-        }),
+        vue(),
         createHtmlPlugin({
           minify: true,
           entry: '/src/main.ts',
