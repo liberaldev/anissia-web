@@ -11,7 +11,7 @@
             <PostEditor :ticker="props.ticker" :placeholder="boardInfo.phTopic" :post="node" :reload="loadViewForce" />
           </div>
           <div v-else>
-            <div v-if="node.root" class="text-2xl">{{node.topic}}</div>
+            <div v-if="node.root" class="text-2xl font-bold">{{node.topic}}</div>
             <div class="flex pt-2 pb-2 px-3 mt-5 as-box text-sm">
               <div class="flex-1"><i class="fa-solid fa-user mr-1.5"></i> {{node.name}}</div>
               <div class="ml-4">
