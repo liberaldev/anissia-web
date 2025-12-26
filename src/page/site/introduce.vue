@@ -94,7 +94,7 @@
     <div class="font-semibold text-xl mt-12">갤러리</div>
     <div class="mt-3 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 
-      <div v-for="node in gallery" :key="node.file"  class="py-2 bg-white rounded-md border border-gray-200 shadow-md dark:bg-zinc-900/50 dark:border-zinc-800">
+      <div v-for="node in gallery" :key="node.key.toString()"  class="py-2 bg-white rounded-md border border-gray-200 shadow-md dark:bg-zinc-900/50 dark:border-zinc-800">
         <div class="text-center">
           <img class="m-auto mt-2" :src="node.src" alt="" />
         </div>
@@ -133,6 +133,7 @@ import {ref} from "vue";
 import {SiteHistory} from "./introduce/SiteHistory";
 import {SiteMember} from "./introduce/SiteMember";
 import {SiteGallery} from "./introduce/SiteGallery";
+import UuidV4 from "../../common/UuidV4";
 
 const nowYear = new Date().getFullYear();
 
@@ -315,22 +316,22 @@ const siteHistory = ref<SiteHistory[]>([
 ]);
 
 const gallery = ref<SiteGallery[]>([
-  { src: timetable_1_jpg, file: 'timetable.1.jpg', title: `최초의 애니편성표 [2009년]`, desc: `애니시간표 -> 애니편성표 (기존 애니시간표는 자료소실)` },
-  { src: timetable_2_jpg, file: 'timetable.2.jpg', title: `두번째 애니편성표 [2009년]`, desc: `이 디자인을 선호하는 사람이 많아 현재도 제공중` },
-  { src: timetable_3_jpg, file: 'timetable.3.jpg', title: `세번째 애니편성표 [2015년]`, desc: `2020년에 다크모드가 추가됨 (정확히는 네번째로 2013년 부터 2015년 까지 존재한 편성표가 있음)` },
-  { src: timetable_4_jpg, file: 'timetable.4.jpg', title: `네번째 애니편성표 [2024년]`, desc: `애니시아 리뉴얼 디자인에 맞춘 tailwind를 사용한 반응형 테이블 버전의 편성표` },
-  { src: timetable_radio_jpg, file: 'timetable-radio.jpg', title: `라디오 편성표 [2009년]`, desc: `라디오 편성표` },
-  { src: timetable_widget_1_jpg, file: 'timetable-rank.1.jpg', title: `최초의 애니편성표 위젯 [2009년 1차]`, desc: `스크린샷이 없어 소스로 복원 [내용부분이 다를 수 있음]` },
-  { src: timetable_widget_2_jpg, file: 'timetable-rank.2.jpg', title: `애니편성표 위젯 [2009년 2차]`, desc: `여러가지 배경 테마가 있음 (이때부터 커스텀의 시작)` },
-  { src: timetable_widget_3_jpg, file: 'timetable-rank.3.jpg', title: `애니편성표 위젯 [2009년 3차]`, desc: `각각의 색상을 바꿀 수 있음` },
-  { src: timetable_widget_4_jpg, file: 'timetable-rank.4.jpg', title: `애니편성표 위젯 [2015년]`, desc: `HTML 태그를 지원하지 않는 곳을 위한 이미지 전용으로 퀄리티는 다소 떨어짐` },
-  { src: other_1_jpg, file: 'other.1.jpg', title: `애니편성표 [2009년]`, desc: `2009년 버전의 드로잉 [작업자: 매디]` },
-  { src: anissia_1_jpg, file: 'anissia.1.jpg', title: `테라시아 (현: 가리사니) [2007년]`, desc: `애니시아는 원래 개발자 사이트인 테라시아를 홍보하기 위해 만들어진 소메뉴였다.` },
-  { src: anissia_2_jpg, file: 'anissia.2.jpg', title: `애니시아 디자인도안 [작업자: 메티오]`, desc: `애니시아 분리독립을 위해 만들어진 도안중 하나` },
-  { src: anissia_3_jpg, file: 'anissia.3.jpg', title: `애니시아 디자인도안 [작업자: 메티오]`, desc: `기획을 지나치게 크게 잡았다가 개발시간이 부족하여 무산됨, 이 "Anissia 마크"는 오랫동안 애니시아의 상징으로 쓰임` },
-  { src: anissia_4_jpg, file: 'anissia.4.jpg', title: `애니시아 1차`, desc:`결국 Anissia 마크만 가져와서 제작` },
-  { src: anissia_5_jpg, file: 'anissia.5.jpg', title: `애니시아 2차 2015년`, desc:`애니시아 2차` },
-  { src: anissia_6_jpg, file: 'anissia.6.jpg', title: `애니시아 2차 2019년`, desc:`실제 서비스 되지 못함 / 2020 리뉴얼의 도안이라고 할 수 있음` }
+  { src: timetable_1_jpg, key: UuidV4.generate(), title: `최초의 애니편성표 [2009년]`, desc: `애니시간표 -> 애니편성표 (기존 애니시간표는 자료소실)` },
+  { src: timetable_2_jpg, key: UuidV4.generate(), title: `두번째 애니편성표 [2009년]`, desc: `이 디자인을 선호하는 사람이 많아 현재도 제공중` },
+  { src: timetable_3_jpg, key: UuidV4.generate(), title: `세번째 애니편성표 [2015년]`, desc: `2020년에 다크모드가 추가됨 (정확히는 네번째로 2013년 부터 2015년 까지 존재한 편성표가 있음)` },
+  { src: timetable_4_jpg, key: UuidV4.generate(), title: `네번째 애니편성표 [2024년]`, desc: `애니시아 리뉴얼 디자인에 맞춘 tailwind를 사용한 반응형 테이블 버전의 편성표` },
+  { src: timetable_radio_jpg, key: UuidV4.generate(), title: `라디오 편성표 [2009년]`, desc: `라디오 편성표` },
+  { src: timetable_widget_1_jpg, key: UuidV4.generate(), title: `최초의 애니편성표 위젯 [2009년 1차]`, desc: `스크린샷이 없어 소스로 복원 [내용부분이 다를 수 있음]` },
+  { src: timetable_widget_2_jpg, key: UuidV4.generate(), title: `애니편성표 위젯 [2009년 2차]`, desc: `여러가지 배경 테마가 있음 (이때부터 커스텀의 시작)` },
+  { src: timetable_widget_3_jpg, key: UuidV4.generate(), title: `애니편성표 위젯 [2009년 3차]`, desc: `각각의 색상을 바꿀 수 있음` },
+  { src: timetable_widget_4_jpg, key: UuidV4.generate(), title: `애니편성표 위젯 [2015년]`, desc: `HTML 태그를 지원하지 않는 곳을 위한 이미지 전용으로 퀄리티는 다소 떨어짐` },
+  { src: other_1_jpg, key: UuidV4.generate(), title: `애니편성표 [2009년]`, desc: `2009년 버전의 드로잉 [작업자: 매디]` },
+  { src: anissia_1_jpg, key: UuidV4.generate(), title: `테라시아 (현: 가리사니) [2007년]`, desc: `애니시아는 원래 개발자 사이트인 테라시아를 홍보하기 위해 만들어진 소메뉴였다.` },
+  { src: anissia_2_jpg, key: UuidV4.generate(), title: `애니시아 디자인도안 [작업자: 메티오]`, desc: `애니시아 분리독립을 위해 만들어진 도안중 하나` },
+  { src: anissia_3_jpg, key: UuidV4.generate(), title: `애니시아 디자인도안 [작업자: 메티오]`, desc: `기획을 지나치게 크게 잡았다가 개발시간이 부족하여 무산됨, 이 "Anissia 마크"는 오랫동안 애니시아의 상징으로 쓰임` },
+  { src: anissia_4_jpg, key: UuidV4.generate(), title: `애니시아 1차`, desc:`결국 Anissia 마크만 가져와서 제작` },
+  { src: anissia_5_jpg, key: UuidV4.generate(), title: `애니시아 2차 2015년`, desc:`애니시아 2차` },
+  { src: anissia_6_jpg, key: UuidV4.generate(), title: `애니시아 2차 2019년`, desc:`실제 서비스 되지 못함 / 2020 리뉴얼의 도안이라고 할 수 있음` }
 ]);
 
 </script>
